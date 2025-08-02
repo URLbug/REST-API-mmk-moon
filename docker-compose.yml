@@ -28,6 +28,9 @@ services:
     build:
       context: .
       dockerfile: 'etc/php/Dockerfile'
+    depends_on:
+      - postgresql
+      - redis
     ports:
       - '9000:9000'
     networks:
