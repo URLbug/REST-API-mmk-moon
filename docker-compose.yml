@@ -1,10 +1,12 @@
-version: '3.8'
+version: '3'
 
 services:
   httpd:
     build:
       context: .
       dockerfile: 'etc/httpd/Dockerfile'
+    depends_on:
+      - php
     ports:
       - '8080:8080'
     networks:
@@ -14,6 +16,9 @@ services:
     build:
       context: .
       dockerfile: 'etc/nginx/Dockerfile'
+    depends_on:
+      - httpd
+      - php
     ports:
       - '80:80'
     networks:
@@ -32,6 +37,8 @@ services:
     build:
       context: .
       dockerfile: 'etc/postgresql/Dockerfile'
+    env_file:
+      - 'etc/postgresql/.env'
     ports:
       - '5432:5432'
     networks:
