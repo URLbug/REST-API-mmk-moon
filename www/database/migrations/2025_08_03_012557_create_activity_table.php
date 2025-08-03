@@ -13,8 +13,12 @@ return new class extends Migration
     {
         Schema::create('activity', function (Blueprint $table) {
             $table->id('activityID');
-            $table->string('title', 255)->nullable();
-            $table->integer('parentActivityID');
+            $table->string('title', 255);
+            $table->foreignId('parentActivityID')
+                ->nullable()
+                ->constrained('activity', 'activityID')
+                ->cascadeOnDelete();
+
             $table->timestamps();
         });
     }

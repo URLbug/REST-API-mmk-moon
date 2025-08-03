@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('organization', function (Blueprint $table) {
             $table->id('organizationID');
 
-            $table->string('title', 255)->nullable();
+            $table->string('title', 255);
 
             $table->foreignId('phoneID')
                 ->constrained('phone', 'phoneID')
