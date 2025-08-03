@@ -11,6 +11,7 @@ use App\Models\User;
 use Database\Factories\OrganizationFactory;
 use Database\Factories\PhoneFactory;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,5 +23,12 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         Organization::factory(10)->configure()->create();
+
+        for($i=1;$i<=10;$i++){
+            DB::table('organization_activity')->insert([
+                'organizationID' => rand(1, 10),
+                'activityID' => rand(1, 10),
+            ]);
+        }
     }
 }

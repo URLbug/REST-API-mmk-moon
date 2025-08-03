@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Activity extends Model
@@ -16,6 +17,11 @@ class Activity extends Model
     protected $fillable = [
         'title',
     ];
+
+    public function organization(): BelongsToMany
+    {
+        return $this->belongsToMany(Organization::class, 'organization_activity', 'activityID', 'organizationID');
+    }
 
     public function parent(): BelongsTo
     {
