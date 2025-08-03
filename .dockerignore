@@ -1,0 +1,11 @@
+.idea
+.vscode
+
+img
+www/resources
+
+.gitignore
+.gitattributes
+.env.example
+README.md
+Makefile

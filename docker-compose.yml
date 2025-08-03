@@ -62,6 +62,13 @@ services:
     volumes:
       - 'redis-data:/data'
 
+  adminer:
+    image: adminer
+    ports:
+      - '8000:8000'
+    networks:
+      - mmk-moon-network
+
 volumes:
   redis-data:
   postgres-data:
