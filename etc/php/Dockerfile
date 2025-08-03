@@ -37,6 +37,8 @@ RUN docker-php-ext-configure gd \
 
 RUN chown -R www-data:www-data /usr/local/apache2/htdocs \
     && find . -type f -exec chmod 644 {} \; \
-    && find . -type d -exec chmod 755 {} \;
+    && find . -type d -exec chmod 755 {} \; \
+    && chgrp -R www-data storage bootstrap/cache \
+    && chmod -R ug+rwx storage bootstrap/cache
 
 CMD ["php-fpm"]
