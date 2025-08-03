@@ -23,9 +23,9 @@ class Organization extends Model
         return $this->belongsTo(Phone::class, 'phoneID', 'phoneID');
     }
 
-    public function building(): HasOne
+    public function building(): BelongsTo
     {
-        return $this->hasOne(Building::class, 'organizationID', 'organizationID');
+        return $this->BelongsTo(Building::class, 'organizationID', 'organizationID');
     }
 
     public function activity(): BelongsToMany
