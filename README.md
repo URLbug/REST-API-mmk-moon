@@ -230,6 +230,8 @@ make clean         # Полная очистка (контейнеры, сети
 - `phones` - Телефонные номера
 - `organization_activity` - Связь организаций и активностей
 
+![img/img.png](img/img.png)
+
 ### Подключение к БД:
 - **Host:** localhost
 - **Port:** 5432
