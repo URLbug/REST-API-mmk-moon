@@ -5,10 +5,8 @@ services:
     build:
       context: .
       dockerfile: 'etc/httpd/Dockerfile'
-    depends_on:
-      - php
     ports:
-      - '8080:8080'
+      - '8000:8000'
     networks:
       - mmk-moon-network
 
@@ -29,8 +27,9 @@ services:
       context: .
       dockerfile: 'etc/php/Dockerfile'
     volumes:
-      - "./www:/usr/local/apache2/htdocs"
+      - './www:/usr/local/apache2/htdocs'
     depends_on:
+      - httpd
       - postgresql
       - redis
     ports:
@@ -65,7 +64,7 @@ services:
   adminer:
     image: adminer
     ports:
-      - '8000:8000'
+      - '8080:8080'
     networks:
       - mmk-moon-network
 
