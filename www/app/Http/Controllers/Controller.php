@@ -6,6 +6,12 @@ use App\Models\Activity;
 use App\Models\Organization;
 use Illuminate\Http\JsonResponse;
 
+/**
+ * @OA\Info(
+ *   version="1.0.0",
+ *   title="MMK Moon API",
+ * )
+ */
 abstract class Controller
 {
     public function toArray(Organization $organization): array

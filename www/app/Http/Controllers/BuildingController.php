@@ -9,10 +9,42 @@ use App\Repository\OrganizationRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
+/**
+ * @OA\Post(
+ *     path="/api/v1/building",
+ *     tags={"Buildings"},
+ *     summary="Получить орагнизации по адресу",
+ *     @OA\RequestBody(
+ *         description="",
+ *         required=true,
+ *         @OA\JsonContent(
+ *             type="object",
+ *             @OA\Property(property="address", type="string"),
+ *         )
+ *     ),
+ *     @OA\Response(response=200, description=""),
+ *     @OA\Response(response=400, description="")
+ * )
+ */
 class BuildingController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * @OA\Get(
+     *     path="/api/v1/building",
+     *     tags={"Buildings"},
+     *     summary="Получить организации по координатам здания",
+     *     @OA\RequestBody(
+     *         description="",
+     *         required=true,
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="latitude", type="float"),
+     *             @OA\Property(property="longitude", type="float"),
+     *         )
+     *     ),
+     *     @OA\Response(response=200, description=""),
+     *     @OA\Response(response=400, description="")
+     * )
      */
     public function index()
     {

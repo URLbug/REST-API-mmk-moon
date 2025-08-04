@@ -1,30 +1,30 @@
 <?php
-
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('/v1/')
-    ->middleware([\App\Http\Middleware\ApiTokenValideted::class])->group(function () {
-    Route::match(
-        ['get', 'post'],
-        '/building',
-        [\App\Http\Controllers\BuildingController::class, 'index']
-    );
+    ->middleware([\App\Http\Middleware\ApiTokenValideted::class, \App\Http\Middleware\JsonErrorHandler::class])
+    ->group(function () {
 
-    Route::match(
-        ['get', 'post'],
-        '/activity',
-        [\App\Http\Controllers\ActivityController::class, 'index']
-    );
+        Route::match(
+            ['get', 'post'],
+            '/building',
+            [\App\Http\Controllers\BuildingController::class, 'index']
+        )->name('building.index');
 
-    Route::get(
-        '{id}/organization',
-        [\App\Http\Controllers\OrganizationController::class, 'index']
-    )->name('organization.index');
+        Route::match(
+            ['get', 'post'],
+            '/activity',
+            [\App\Http\Controllers\ActivityController::class, 'index']
+        )->name('activity.index');
 
-    Route::post(
-        'search/',
-        [\App\Http\Controllers\OrganizationController::class, 'index']
-    )->name('organization.search');
+        Route::get(
+            '{id}/organization',
+            [\App\Http\Controllers\OrganizationController::class, 'index']
+        )->name('organization.index');
 
-})->name('api');
+        Route::post(
+            'search/',
+            [\App\Http\Controllers\OrganizationController::class, 'index']
+        )->name('organization.search');
+
+    })->name('api');

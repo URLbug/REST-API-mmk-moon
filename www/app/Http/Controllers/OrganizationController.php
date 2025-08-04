@@ -9,7 +9,21 @@ use Illuminate\Support\Facades\Validator;
 class OrganizationController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * @OA\Get(
+     *     path="/api/v1/{id}/organization",
+     *     tags={"Organizations"},
+     *     summary="Получить ID организации",
+     *     @OA\RequestBody(
+     *         description="",
+     *         required=true,
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="id", type="int"),
+     *         )
+     *     ),
+     *     @OA\Response(response=200, description=""),
+     *     @OA\Response(response=400, description="")
+     * )
      */
     public function index(int $id = 0): JsonResponse
     {
@@ -66,6 +80,24 @@ class OrganizationController extends Controller
         return $result;
     }
 
+    /**
+     * @OA\Post(
+     *     path="/api/v1/search",
+     *     tags={"Organizations"},
+     *     summary="Поиск по орагизации",
+     *     @OA\RequestBody(
+     *         description="",
+     *         required=true,
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="title", type="string"),
+     *             @OA\Property(property="activity", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(response=200, description=""),
+     *     @OA\Response(response=400, description="")
+     * )
+     */
     private function searchByActivity(string $activity)
     {
         $validator = Validator::make(\request()->all(), [

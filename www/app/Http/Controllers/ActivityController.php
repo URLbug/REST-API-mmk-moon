@@ -9,9 +9,27 @@ use App\Repository\OrganizationRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
+
 class ActivityController extends Controller
 {
 
+    /**
+     * @OA\Post(
+     *     path="/api/v1/activity",
+     *     tags={"Activity"},
+     *     summary="Получить по дееятельности организации",
+     *     @OA\RequestBody(
+     *         description="",
+     *         required=true,
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="address", type="string"),
+     *         )
+     *     ),
+     *     @OA\Response(response=200, description=""),
+     *     @OA\Response(response=400, description="")
+     * )
+     */
     public function index(Request $request)
     {
         if(request()->isMethod('POST')) {

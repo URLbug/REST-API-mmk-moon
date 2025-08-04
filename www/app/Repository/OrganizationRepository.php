@@ -9,7 +9,6 @@ use App\Models\Phone;
 
 final class OrganizationRepository implements Repository
 {
-
     public static function getAll()
     {
         return null;
