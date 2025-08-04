@@ -25,8 +25,8 @@
 
 ### Предварительные требования
 
-- [Docker](https://docs.docker.com/get-docker/) (версия 20.10+)
-- [Docker Compose](https://docs.docker.com/compose/install/) (версия 2.0+)
+- [Docker](https://docs.docker.com/get-docker/) (версия 28+)
+- [Docker Compose](https://docs.docker.com/compose/install/) (версия 2+)
 - [Make](https://www.gnu.org/software/make/) (опционально, для удобства)
 
 ### Установка и запуск
